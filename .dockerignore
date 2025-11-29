@@ -1,0 +1,10 @@
+/.vscode
+/target
+
+Dockerfile.dev
+Dockerfile.prod
+README.md
+Cargo.lock
+
+.dockerignore
+.gitignore

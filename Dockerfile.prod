@@ -1,0 +1,19 @@
+# Stage 1: build
+FROM rust:1.82 as builder
+
+WORKDIR /app
+COPY . .
+
+# Сборка в режиме релиза
+RUN cargo build --release
+
+# Stage 2: минимальный runtime
+FROM debian:bullseye-slim
+
+WORKDIR /app
+
+# Копируем только бинарь
+COPY --from=builder /app/target/release/FirstRsSteps .
+
+# CMD запускает бинарь
+CMD ["./FirstRsSteps"]
